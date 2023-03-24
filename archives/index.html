@@ -428,16 +428,144 @@
             
         
         <article class="index-post">
-            <a class="abstract-title" href="/2023/03/24/hello-world/">
+            <a class="abstract-title" href="/2023/03/24/docker/build/">
                 
-                <span class="abstract-title-text">Hello World</span>
+                <span class="abstract-title-text">[Untitled Post]</span>
             </a>
             <div class="abstract-content">
-                Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;
+                1docker run --rm -it -p 3000:3000 -e MY_SECRET=$(cat /Users/free/Desktop/学习草稿/脚本/multi-signup/my_secret_test) multi-signup
 
-More info: Writing
-Run server1$ hexo ...
+1ocker run --rm -it -p 3000:3000 -e MY_SECRET=my_secret_value my-app
+
+1docker run --rm -it -p 3000:3000 -v $(pwd)/config:/app/config my-app
+
+12MY_SECRET=$(cat ./my_secret)do...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2023/03/24">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/03/24</span>
+                </div>
+                <!-- tags -->
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2023/03/24/docker/%E6%9E%84%E5%BB%BA%E9%95%9C%E5%83%8F/">
+                
+                <span class="abstract-title-text">[Untitled Post]</span>
+            </a>
+            <div class="abstract-content">
+                https://learnku.com/articles/48435
+构建镜像并发布
+登录docker账号docker login
+打包用户名前缀镜像用户名&#x2F;镜像名
+推送镜像docker push 镜像名称：版本
+
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2023/03/24">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/03/24</span>
+                </div>
+                <!-- tags -->
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2023/03/24/npm%E5%8C%85/%E5%8F%91%E5%B8%83npm%E5%8C%85/">
+                
+                <span class="abstract-title-text">[Untitled Post]</span>
+            </a>
+            <div class="abstract-content">
+                https://juejin.cn/post/6844903749199069197#heading-23
+登录npmnpm login
+修改package.json1234&#123;&quot;name&quot;: &quot;@bamblehorse/tiny&quot;,&quot;version&quot;: &quot;1.0.0&quot;&#125;
+
+发布npm publish –access&#x3D;public
+
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2023/03/24">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/03/24</span>
+                </div>
+                <!-- tags -->
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2023/03/24/npm%E5%8C%85/%E5%8F%91%E5%B8%83%E4%B8%80%E4%B8%AA%E7%94%B1typescript%E6%9E%84%E5%BB%BA%E7%9A%84npm%E5%8C%85/">
+                
+                <span class="abstract-title-text">[Untitled Post]</span>
+            </a>
+            <div class="abstract-content">
+                https://juejin.cn/post/6844903892119977998#heading-3
+https://monsoir.github.io/Notes/Node/writing-npm-package-in-typescript.html
+types报错
+1import &#123; TransportOptions &#125; from &#x27;nodemailer&#x27;;
+
+尝试了别的方式失败了，暂时直接修改了package.json
+1234&quot;dependencies&quot;: &#123;  &quot;nodemailer&quot;...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2023/03/24">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/03/24</span>
+                </div>
+                <!-- tags -->
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2023/03/24/typescript/dts%E5%92%8Ctypes%E5%8C%85/">
+                
+                <span class="abstract-title-text">[Untitled Post]</span>
+            </a>
+            <div class="abstract-content">
+                在将 SDK 打包成发布版本时，是否包含 TypeScript 声明文件（.d.ts）以及是否需要单独发布 @xxx&#x2F;types 包取决于开发者的需求和开发的 SDK 是否使用 TypeScript 编写。
+如果 SDK 是使用 TypeScript 编写的，则应该包含 TypeScript 声明文件，以便其他开发者在使用 SDK 时可以获得更好的类型支持。如果 SDK 的目标用户不使用 TypeScript，那么也可以选择不将 .d.ts 文件包含在发布版本中，这样可以减小包的大小。
+如果将 .d.ts 文件包含在发布版本中，那么可以将其放在一个单独的 @xxx&#x2F;t...
             </div>
             <!-- read more -->
             
@@ -481,7 +609,143 @@ App接口定义了一系列用于操作Vue实例和应用程序的方法和属�
         </article>
         <div class="index-post-divider"></div>
     
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2023/03/24/%E5%B7%A5%E5%85%B7%E8%BD%AF%E4%BB%B6/adobe%E8%BD%AF%E4%BB%B6%E8%B5%84%E6%BA%90/">
+                
+                <span class="abstract-title-text">[Untitled Post]</span>
+            </a>
+            <div class="abstract-content">
+                Mac版百度网盘：https://pan.baidu.com/s/1qTXvV6XJrPHUVyDZtsE9Pg?pwd=2taq提取码：2taqWin版百度网盘：https://pan.baidu.com/s/1xJwNZ3BZ2T97hyYykfy41A?pwd=m8dy提取码：m8dy
+
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2023/03/24">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/03/24</span>
+                </div>
+                <!-- tags -->
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2023/03/24/%E5%B7%A5%E5%85%B7%E8%BD%AF%E4%BB%B6/%E8%A7%A3%E5%86%B3mac_airdrop_wifi%E5%8D%A0%E7%94%A8%E9%97%AE%E9%A2%98/">
+                
+                <span class="abstract-title-text">[Untitled Post]</span>
+            </a>
+            <div class="abstract-content">
+                AWDL是Apple Wireless Direct Link的缩写，它是一种用于macOS和iOS设备之间进行直接无线通信的技术。如果您想禁用AWDL服务，可以按照以下步骤进行操作：
+​	1	
+​	2	打开终端应用程序。
+​	3	输入以下命令并按Enter键：
+  sudo ifconfig awdl0 down
+这将关闭AWDL服务。
+​	1	
+​	2	如果您想永久禁用AWDL服务，可以通过以下步骤进行操作：
+​	◦	
+​	◦	打开终端应用程序。
+​	3		◦	输入以下命令并按Enter键：
+​	4	 sudo nano &#x2F;etc&#x2F;sysctl.conf
+​	◦	...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2023/03/24">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/03/24</span>
+                </div>
+                <!-- tags -->
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2023/03/24/%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%98%E8%B5%84%E6%BA%90/4k%E7%94%B5%E5%BD%B1/">
+                
+                <span class="abstract-title-text">[Untitled Post]</span>
+            </a>
+            <div class="abstract-content">
+                https://www.aliyundrive.com/s/VcaW3CJkG7w
+https://www.qitabbs.com/circle/18883.html
+
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2023/03/24">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/03/24</span>
+                </div>
+                <!-- tags -->
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2023/03/24/%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%98%E8%B5%84%E6%BA%90/NBA/">
+                
+                <span class="abstract-title-text">[Untitled Post]</span>
+            </a>
+            <div class="abstract-content">
+                NBA总决赛
+https://www.aliyundrive.com/s/QCTEo4VZHNa
+链接：
+https://www.aliyundrive.com/s/nSeWhneKnPQ
+4k：
+https://www.aliyundrive.com/s/2mp8MMjPcSa
+https://www.aliyundrive.com/s/QCTEo4VZHNa
+refer
+https://www.qitabbs.com/circle/11349.html
+
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2023/03/24">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/03/24</span>
+                </div>
+                <!-- tags -->
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
     <!-- paginator  -->
+    
+        <nav class="page-nav">
+            <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/">NEXT &gt;</a>
+        </nav>
     
 </main>
 
@@ -594,7 +858,128 @@ App接口定义了一系列用于操作Vue实例和应用程序的方法和属�
         
         
         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
     
@@ -603,7 +988,7 @@ App接口定义了一系列用于操作Vue实例和应用程序的方法和属�
     
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 2
+        Total : 13
         </div>
         <!-- search  -->
         
@@ -620,13 +1005,79 @@ App接口定义了一系列用于操作Vue实例和应用程序的方法和属�
         
         <li class="archive-post-item">
             <span class="archive-post-date">03/24</span>
-            <a class="archive-post-title" href="/2023/03/24/hello-world/">Hello World</a>
+            <a class="archive-post-title" href="/2023/03/24/docker/build/">[Untitled Post]</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span>
+            <a class="archive-post-title" href="/2023/03/24/docker/%E6%9E%84%E5%BB%BA%E9%95%9C%E5%83%8F/">[Untitled Post]</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span>
+            <a class="archive-post-title" href="/2023/03/24/npm%E5%8C%85/%E5%8F%91%E5%B8%83npm%E5%8C%85/">[Untitled Post]</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span>
+            <a class="archive-post-title" href="/2023/03/24/npm%E5%8C%85/%E5%8F%91%E5%B8%83%E4%B8%80%E4%B8%AA%E7%94%B1typescript%E6%9E%84%E5%BB%BA%E7%9A%84npm%E5%8C%85/">[Untitled Post]</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span>
+            <a class="archive-post-title" href="/2023/03/24/typescript/dts%E5%92%8Ctypes%E5%8C%85/">[Untitled Post]</a>
         </li>
     
         
         <li class="archive-post-item">
             <span class="archive-post-date">03/24</span>
             <a class="archive-post-title" href="/2023/03/24/vue%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/vue%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0-day1/">vue源码学习-day1</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span>
+            <a class="archive-post-title" href="/2023/03/24/%E5%B7%A5%E5%85%B7%E8%BD%AF%E4%BB%B6/adobe%E8%BD%AF%E4%BB%B6%E8%B5%84%E6%BA%90/">[Untitled Post]</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span>
+            <a class="archive-post-title" href="/2023/03/24/%E5%B7%A5%E5%85%B7%E8%BD%AF%E4%BB%B6/%E8%A7%A3%E5%86%B3mac_airdrop_wifi%E5%8D%A0%E7%94%A8%E9%97%AE%E9%A2%98/">[Untitled Post]</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span>
+            <a class="archive-post-title" href="/2023/03/24/%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%98%E8%B5%84%E6%BA%90/4k%E7%94%B5%E5%BD%B1/">[Untitled Post]</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span>
+            <a class="archive-post-title" href="/2023/03/24/%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%98%E8%B5%84%E6%BA%90/NBA/">[Untitled Post]</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span>
+            <a class="archive-post-title" href="/2023/03/24/%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%98%E8%B5%84%E6%BA%90/%E6%90%9C%E7%B4%A2%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%98%E8%B5%84%E6%BA%90%E7%AB%99/">[Untitled Post]</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span>
+            <a class="archive-post-title" href="/2023/03/24/%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%98%E8%B5%84%E6%BA%90/%E6%BC%94%E5%94%B1%E4%BC%9A/">[Untitled Post]</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/17</span>
+            <a class="archive-post-title" href="/2023/03/17/about/index/">about</a>
         </li>
     
     </div>
