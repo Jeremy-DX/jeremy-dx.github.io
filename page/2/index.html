@@ -567,6 +567,74 @@ https://slowread.net/ali105.html
             
         
         <article class="index-post">
+            <a class="abstract-title" href="/2023/03/28/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/javascript/pipe/">
+                
+                <span class="abstract-title-text">pipe</span>
+            </a>
+            <div class="abstract-content">
+                在JavaScript中，可以通过以下方式来实现一个简单的pipe函数：
+12345function pipe(...fns) &#123;  return function(value) &#123;    return fns.reduce((acc, fn) =&gt; fn(acc), value);  &#125;&#125;
+
+
+
+这个函数接受一系列的函数作为参数，然后返回一个新的函数，这个新函数接受一个值作为参数，并将它传递给第一个函数，然后将第一个函数的返回值传递给第二个函数，以此类推，最终返回最后一个函数的返回值。
+例如，我们可以使用这个pipe函数来将一个字符串转化为...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2023/03/28">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/03/28</span>
+                </div>
+                <!-- tags -->
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2023/03/28/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/javascript/pipe%E5%92%8Ccompose%E7%9A%84%E5%8C%BA%E5%88%AB/">
+                
+                <span class="abstract-title-text">pipe和compose的区别</span>
+            </a>
+            <div class="abstract-content">
+                在函数式编程中，pipe和compose都是用于将多个函数组合在一起的工具，不同之处在于它们组合函数的顺序不同。
+pipe函数将多个函数组合在一起，从左到右依次执行。这意味着第一个函数将首先被调用，然后将其输出传递给第二个函数，以此类推，直到最后一个函数返回结果。
+例如，假设我们有三个函数，分别是f、g和h，我们可以使用pipe函数将它们组合在一起：
+12345const result = pipe(  f,  g,  h)(value);
+
+
+
+在这个例子中，f函数首先被调用，然后将其输出传递给g函数，最后将g函数的输出传递给h函数，并返回最终结果。
+相反，compose函数将多个函数...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2023/03/28">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/03/28</span>
+                </div>
+                <!-- tags -->
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
             <a class="abstract-title" href="/2023/03/28/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/javascript/setTimeout%E5%92%8CsetInterval%E7%9B%B8%E4%BA%92%E5%AE%9E%E7%8E%B0/">
                 
                 <span class="abstract-title-text">setTimeout和setInterval相互实现</span>
@@ -974,7 +1042,33 @@ https://slowread.net/ali105.html
         
         
         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -1089,7 +1183,7 @@ https://slowread.net/ali105.html
     
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 18
+        Total : 20
         </div>
         <!-- search  -->
         
@@ -1185,6 +1279,18 @@ https://slowread.net/ali105.html
         <li class="archive-post-item">
             <span class="archive-post-date">03/28</span>
             <a class="archive-post-title" href="/2023/03/28/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/javascript/compose%E5%87%BD%E6%95%B0/">compose函数</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/28</span>
+            <a class="archive-post-title" href="/2023/03/28/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/javascript/pipe/">pipe</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/28</span>
+            <a class="archive-post-title" href="/2023/03/28/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/javascript/pipe%E5%92%8Ccompose%E7%9A%84%E5%8C%BA%E5%88%AB/">pipe和compose的区别</a>
         </li>
     
         

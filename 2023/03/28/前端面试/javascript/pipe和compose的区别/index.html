@@ -19,12 +19,12 @@
         <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
     
     <meta name="description" content="">
-    <meta name="description" content="https:&#x2F;&#x2F;www.aliyundrive.com&#x2F;s&#x2F;VcaW3CJkG7w https:&#x2F;&#x2F;www.qitabbs.com&#x2F;circle&#x2F;18883.html">
+    <meta name="description" content="在函数式编程中，pipe和compose都是用于将多个函数组合在一起的工具，不同之处在于它们组合函数的顺序不同。 pipe函数将多个函数组合在一起，从左到右依次执行。这意味着第一个函数将首先被调用，然后将其输出传递给第二个函数，以此类推，直到最后一个函数返回结果。 例如，假设我们有三个函数，分别是f、g和h，我们可以使用pipe函数将它们组合在一起： 12345const result &#x3D; pip">
 <meta property="og:type" content="article">
-<meta property="og:title" content="4k电影">
-<meta property="og:url" content="http://example.com/2023/03/28/%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%98%E8%B5%84%E6%BA%90/4k%E7%94%B5%E5%BD%B1/index.html">
+<meta property="og:title" content="pipe和compose的区别">
+<meta property="og:url" content="http://example.com/2023/03/28/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/javascript/pipe%E5%92%8Ccompose%E7%9A%84%E5%8C%BA%E5%88%AB/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="https:&#x2F;&#x2F;www.aliyundrive.com&#x2F;s&#x2F;VcaW3CJkG7w https:&#x2F;&#x2F;www.qitabbs.com&#x2F;circle&#x2F;18883.html">
+<meta property="og:description" content="在函数式编程中，pipe和compose都是用于将多个函数组合在一起的工具，不同之处在于它们组合函数的顺序不同。 pipe函数将多个函数组合在一起，从左到右依次执行。这意味着第一个函数将首先被调用，然后将其输出传递给第二个函数，以此类推，直到最后一个函数返回结果。 例如，假设我们有三个函数，分别是f、g和h，我们可以使用pipe函数将它们组合在一起： 12345const result &#x3D; pip">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-03-28T08:37:35.495Z">
 <meta property="article:modified_time" content="2023-03-28T08:37:35.495Z">
@@ -34,7 +34,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="icon" href="/assets/favicon.ico">
     
-    <title>4k电影 · jeremy-dx&#39;s Studio</title>
+    <title>pipe和compose的区别 · jeremy-dx&#39;s Studio</title>
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -259,7 +259,7 @@
                 <a href="/">jeremy-dx&#39;s Studio.</a>
             </div>
             <div class="post-title header-element">
-                <a href="#" class="post-name">4k电影</a>
+                <a href="#" class="post-name">pipe和compose的区别</a>
             </div>
         </div>
     
@@ -305,7 +305,7 @@
         <h1 class="intro-title">
             <!-- 主页  -->
             
-                4k电影
+                pipe和compose的区别
             <!-- 404 -->
             
         </h1>
@@ -488,8 +488,22 @@
             <div class="container container-unloaded">
                 <main class="main post-page">
     <article class="article-entry">
-        <p><a target="_blank" rel="noopener" href="https://www.aliyundrive.com/s/VcaW3CJkG7w">https://www.aliyundrive.com/s/VcaW3CJkG7w</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.qitabbs.com/circle/18883.html">https://www.qitabbs.com/circle/18883.html</a></p>
+        <p>在函数式编程中，pipe和compose都是用于将多个函数组合在一起的工具，不同之处在于它们组合函数的顺序不同。</p>
+<p>pipe函数将多个函数组合在一起，从左到右依次执行。这意味着第一个函数将首先被调用，然后将其输出传递给第二个函数，以此类推，直到最后一个函数返回结果。</p>
+<p>例如，假设我们有三个函数，分别是f、g和h，我们可以使用pipe函数将它们组合在一起：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const result = pipe(</span><br><span class="line">  f,</span><br><span class="line">  g,</span><br><span class="line">  h</span><br><span class="line">)(value);</span><br></pre></td></tr></table></figure>
+
+
+
+<p>在这个例子中，f函数首先被调用，然后将其输出传递给g函数，最后将g函数的输出传递给h函数，并返回最终结果。</p>
+<p>相反，compose函数将多个函数组合在一起，从右到左依次执行。这意味着最后一个函数将首先被调用，然后将其输出传递给倒数第二个函数，以此类推，直到第一个函数返回结果。</p>
+<p>例如，假设我们有三个函数，分别是f、g和h，我们可以使用compose函数将它们组合在一起：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const result = compose(</span><br><span class="line">  h,</span><br><span class="line">  g,</span><br><span class="line">  f</span><br><span class="line">)(value);</span><br></pre></td></tr></table></figure>
+
+
+
+<p>在这个例子中，f函数首先被调用，然后将其输出传递给g函数，最后将g函数的输出传递给h函数，并返回最终结果。</p>
+<p>因此，pipe和compose的区别在于它们组合函数的顺序不同，pipe从左到右依次执行函数，而compose从右到左依次执行函数。</p>
 
     </article>
     <!-- license -->
@@ -499,16 +513,16 @@
         <li class="next">
             
                 <div class="nextSlogan">Next Post</div>
-                <a href="/2023/03/28/%E5%B7%A5%E5%85%B7%E8%BD%AF%E4%BB%B6/%E8%A7%A3%E5%86%B3mac_airdrop_wifi%E5%8D%A0%E7%94%A8%E9%97%AE%E9%A2%98/" title="解决mac-airdrop-wifi占用问题">
-                    <div class="nextTitle">解决mac-airdrop-wifi占用问题</div>
+                <a href="/2023/03/28/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/javascript/pipe/" title="pipe">
+                    <div class="nextTitle">pipe</div>
                 </a>
             
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href="/2023/03/28/%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%98%E8%B5%84%E6%BA%90/NBA/" title="NBA">
-                    <div class="prevTitle">NBA</div>
+                <a href="/2023/03/28/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/javascript/setTimeout%E5%92%8CsetInterval%E7%9B%B8%E4%BA%92%E5%AE%9E%E7%8E%B0/" title="setTimeout和setInterval相互实现">
+                    <div class="prevTitle">setTimeout和setInterval相互实现</div>
                 </a>
             
         </li>
