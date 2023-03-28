@@ -428,194 +428,6 @@
             
         
         <article class="index-post">
-            <a class="abstract-title" href="/2023/03/28/docker/build/">
-                
-                <span class="abstract-title-text">build</span>
-            </a>
-            <div class="abstract-content">
-                1docker run --rm -it -p 3000:3000 -e MY_SECRET=$(cat /Users/free/Desktop/学习草稿/脚本/multi-signup/my_secret_test) multi-signup
-
-1ocker run --rm -it -p 3000:3000 -e MY_SECRET=my_secret_value my-app
-
-1docker run --rm -it -p 3000:3000 -v $(pwd)/config:/app/config my-app
-
-123MY_SECRET=$(cat ./my_secret)d...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2023/03/28">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/03/28</span>
-                </div>
-                <!-- tags -->
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2023/03/28/docker/%E6%9E%84%E5%BB%BA%E9%95%9C%E5%83%8F/">
-                
-                <span class="abstract-title-text">构建镜像</span>
-            </a>
-            <div class="abstract-content">
-                https://learnku.com/articles/48435
-构建镜像并发布
-登录docker账号docker login
-打包用户名前缀镜像用户名&#x2F;镜像名
-推送镜像docker push 镜像名称：版本
-
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2023/03/28">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/03/28</span>
-                </div>
-                <!-- tags -->
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2023/03/28/npm%E5%8C%85/%E5%8F%91%E5%B8%83npm%E5%8C%85/">
-                
-                <span class="abstract-title-text">发布npm包</span>
-            </a>
-            <div class="abstract-content">
-                https://juejin.cn/post/6844903749199069197#heading-23
-登录npmnpm login
-修改package.json1234&#123;&quot;name&quot;: &quot;@bamblehorse/tiny&quot;,&quot;version&quot;: &quot;1.0.0&quot;&#125;
-
-发布npm publish –access&#x3D;public
-
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2023/03/28">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/03/28</span>
-                </div>
-                <!-- tags -->
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2023/03/28/npm%E5%8C%85/%E5%8F%91%E5%B8%83%E4%B8%80%E4%B8%AA%E7%94%B1typescript%E6%9E%84%E5%BB%BA%E7%9A%84npm%E5%8C%85/">
-                
-                <span class="abstract-title-text">发布一个由typescript构建的npm包</span>
-            </a>
-            <div class="abstract-content">
-                https://juejin.cn/post/6844903892119977998#heading-3
-https://monsoir.github.io/Notes/Node/writing-npm-package-in-typescript.html
-types报错
-1import &#123; TransportOptions &#125; from &#x27;nodemailer&#x27;;
-
-尝试了别的方式失败了，暂时直接修改了package.json
-1234&quot;dependencies&quot;: &#123;  &quot;nodemailer&quot;...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2023/03/28">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/03/28</span>
-                </div>
-                <!-- tags -->
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2023/03/28/typescript/dts%E5%92%8Ctypes%E5%8C%85/">
-                
-                <span class="abstract-title-text">dts和types包</span>
-            </a>
-            <div class="abstract-content">
-                在将 SDK 打包成发布版本时，是否包含 TypeScript 声明文件（.d.ts）以及是否需要单独发布 @xxx&#x2F;types 包取决于开发者的需求和开发的 SDK 是否使用 TypeScript 编写。
-如果 SDK 是使用 TypeScript 编写的，则应该包含 TypeScript 声明文件，以便其他开发者在使用 SDK 时可以获得更好的类型支持。如果 SDK 的目标用户不使用 TypeScript，那么也可以选择不将 .d.ts 文件包含在发布版本中，这样可以减小包的大小。
-如果将 .d.ts 文件包含在发布版本中，那么可以将其放在一个单独的 @xxx&#x2F;t...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2023/03/28">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/03/28</span>
-                </div>
-                <!-- tags -->
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2023/03/28/vue%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/vue%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0-day1/">
-                
-                <span class="abstract-title-text">vue源码学习-day1</span>
-            </a>
-            <div class="abstract-content">
-                从createApp入手概述代码位置在packages/runtime-core/src/apiCreateApp.ts
-其中，createApp函数是一个工厂函数，用于创建一个Vue实例，并返回一个包含Vue实例和其他API方法的App对象。createApp函数的实现主要包括创建上下文对象、安装插件、注册组件和指令、挂载应用程序等步骤。
-App接口定义了一系列用于操作Vue实例和应用程序的方法和属性，包括version属性、config属性、use方法、mixin方法、component方法、directive方法、mount方法、unmount方法和provide方法等。这些API...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2023/03/28">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/03/28</span>
-                </div>
-                <!-- tags -->
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
             <a class="abstract-title" href="/2023/03/28/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/%E8%BD%AF%E9%93%BE%E6%8E%A5%E5%92%8C%E7%A1%AC%E9%93%BE%E6%8E%A5/">
                 
                 <span class="abstract-title-text">软链接和硬链接</span>
@@ -740,10 +552,211 @@ https://www.qitabbs.com/circle/18883.html
         </article>
         <div class="index-post-divider"></div>
     
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2023/03/28/%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%98%E8%B5%84%E6%BA%90/NBA/">
+                
+                <span class="abstract-title-text">NBA</span>
+            </a>
+            <div class="abstract-content">
+                NBA总决赛
+https://www.aliyundrive.com/s/QCTEo4VZHNa
+链接：
+https://www.aliyundrive.com/s/nSeWhneKnPQ
+4k：
+https://www.aliyundrive.com/s/2mp8MMjPcSa
+https://www.aliyundrive.com/s/QCTEo4VZHNa
+refer
+https://www.qitabbs.com/circle/11349.html
+
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2023/03/28">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/03/28</span>
+                </div>
+                <!-- tags -->
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2023/03/28/%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%98%E8%B5%84%E6%BA%90/%E6%90%9C%E7%B4%A2%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%98%E8%B5%84%E6%BA%90%E7%AB%99/">
+                
+                <span class="abstract-title-text">搜索阿里云盘资源站</span>
+            </a>
+            <div class="abstract-content">
+                https://www.alypw.com/post/2006.html
+https://slowread.net/ali105.html
+
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2023/03/28">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/03/28</span>
+                </div>
+                <!-- tags -->
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2023/03/28/%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%98%E8%B5%84%E6%BA%90/%E6%BC%94%E5%94%B1%E4%BC%9A/">
+                
+                <span class="abstract-title-text">演唱会</span>
+            </a>
+            <div class="abstract-content">
+                周杰伦演唱会周杰伦【2010超时代演唱会】11.5GB！蓝光原盘！ 、fr﹏om w﹏ww.y‥un‥pan zi_yu﹏an.co‥m
+链接：https://www.aliyundrive.com/s/57UZ4AGxgWG 、fr﹏om w﹏ww.y‥un‥pan zi_yu﹏an.co‥m
+、fr﹏om w﹏ww.y‥un‥pan zi_yu﹏an.co‥m
+周杰伦【2016 地表最强世界巡回演唱会】4K！ 中文字幕完整版！ 、fr﹏om w﹏ww.y‥un‥pan zi_yu﹏an.co‥m
+链接：https://www.aliyundrive.com/s/LbUgLFpL5pF...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2023/03/28">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/03/28</span>
+                </div>
+                <!-- tags -->
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2023/03/28/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/javascript/pipe%E5%92%8Ccompose%E7%9A%84%E5%8C%BA%E5%88%AB/">
+                
+                <span class="abstract-title-text">pipe和compose的区别</span>
+            </a>
+            <div class="abstract-content">
+                在函数式编程中，pipe和compose都是用于将多个函数组合在一起的工具，不同之处在于它们组合函数的顺序不同。
+pipe函数将多个函数组合在一起，从左到右依次执行。这意味着第一个函数将首先被调用，然后将其输出传递给第二个函数，以此类推，直到最后一个函数返回结果。
+例如，假设我们有三个函数，分别是f、g和h，我们可以使用pipe函数将它们组合在一起：
+12345const result = pipe(  f,  g,  h)(value);
+
+
+
+在这个例子中，f函数首先被调用，然后将其输出传递给g函数，最后将g函数的输出传递给h函数，并返回最终结果。
+相反，compose函数将多个函数...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2023/03/28">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/03/28</span>
+                </div>
+                <!-- tags -->
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2023/03/28/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/javascript/setTimeout%E5%92%8CsetInterval%E7%9B%B8%E4%BA%92%E5%AE%9E%E7%8E%B0/">
+                
+                <span class="abstract-title-text">setTimeout和setInterval相互实现</span>
+            </a>
+            <div class="abstract-content">
+                setTimeout实现setInterval普通版本
+123456789const mySetInterval = (fn,time)=&gt;&#123;	let loop = () =&gt;&#123;		fn()    setTimeout(()=&gt;&#123;      loop()    &#125;,time)	&#125;	setTimeout(loop,time)&#125;
+
+
+
+
+
+带clearInterval版本
+123456789101112131415const mySetInterval = (fn,time)=&gt;&#123;	let time...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2023/03/28">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/03/28</span>
+                </div>
+                <!-- tags -->
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2023/03/28/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/javascript/%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D/">
+                
+                <span class="abstract-title-text">深拷贝和浅拷贝</span>
+            </a>
+            <div class="abstract-content">
+                JavaScript中的拷贝分为浅拷贝和深拷贝两种方式，它们的主要区别在于拷贝后的对象是否与原对象共享引用。
+浅拷贝浅拷贝只是复制了对象的引用，而不是对象本身。这意味着当我们修改拷贝后的对象时，原对象也会被修改。常见的浅拷贝方式包括：
+
+赋值操作符（&#x3D;）：将对象赋值给另一个变量时，只是复制了对象的引用，而不是对象本身。
+Object.assign()方法：可以将一个或多个源对象的属性复制到目标对象中，也只是复制了对象的引用。
+扩展运算符（…）：将一个对象中的所有属性复制到另一个对象中，也只是复制了对象的引用。
+
+例如，我们使用赋值操作符来进行浅拷贝：
+123456const o...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2023/03/28">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/03/28</span>
+                </div>
+                <!-- tags -->
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
     <!-- paginator  -->
     
         <nav class="page-nav">
-            <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/">NEXT &gt;</a>
+            <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/2/">NEXT &gt;</a>
         </nav>
     
 </main>
@@ -947,7 +960,20 @@ https://www.qitabbs.com/circle/18883.html
         
         
         
+        
+        
+        
+        
+        
     
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -1078,7 +1104,7 @@ https://www.qitabbs.com/circle/18883.html
     
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 20
+        Total : 21
         </div>
         <!-- search  -->
         
@@ -1192,6 +1218,12 @@ https://www.qitabbs.com/circle/18883.html
         <li class="archive-post-item">
             <span class="archive-post-date">03/28</span>
             <a class="archive-post-title" href="/2023/03/28/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/javascript/setTimeout%E5%92%8CsetInterval%E7%9B%B8%E4%BA%92%E5%AE%9E%E7%8E%B0/">setTimeout和setInterval相互实现</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/28</span>
+            <a class="archive-post-title" href="/2023/03/28/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/javascript/%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D/">深拷贝和浅拷贝</a>
         </li>
     
         
