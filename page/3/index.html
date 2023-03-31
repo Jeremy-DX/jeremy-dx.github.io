@@ -443,98 +443,6 @@
             
         
         <article class="index-post">
-            <a class="abstract-title" href="/2023/03/31/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/javascript/%5B'1',%20'2',%20'3'%5D.map(parseInt)/">
-                
-                <span class="abstract-title-text">1-2-3-map-parseInt</span>
-            </a>
-            <div class="abstract-content">
-                第一眼看到这个题目的时候，脑海跳出的答案是 [1, 2, 3]，但是**真正的答案是[1, NaN, NaN]**。
-
-首先让我们回顾一下，map函数的第一个参数callback：
-
-var new_array = arr.map(function callback(currentValue[, index[, array]]) &#123; // Return element for new_array &#125;[,  thisArg])这个callback一共可以接收三个参数，其中第一个参数代表当前被处理的元素，而第二个参数代表该元素的索引。
-
-而parseInt则是用来解析字符...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2023/03/31">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/03/31</span>
-                </div>
-                <!-- tags -->
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2023/03/31/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/javascript/call%E3%80%81apply%E3%80%81bind/">
-                
-                <span class="abstract-title-text">call、apply、bind</span>
-            </a>
-            <div class="abstract-content">
-                call 和 apply和bind 的区别是什么，哪个性能更好一些
-共同点都是javascript中用来修改this指向的内置方法
-call和apply可以立即调用函数并且传递参数，但是bind是创建一个新函数并且返回，需要手动调用
-call接受一个参数列表，apply接受一个数组，bind接受任意数量的参数，不会立即传递给函数，在手动调用时传递
-性能方面call&gt;apply&gt;bind，因为bind需要传回新函数，需要额外的时间和内存（总结: 在我们平时的开发中其实不必关注call和apply的性能问题，但是可以尽可能的去用call，特别是es6的reset解构的支持，cal...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2023/03/31">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/03/31</span>
-                </div>
-                <!-- tags -->
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2023/03/31/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/javascript/compose%E5%87%BD%E6%95%B0/">
-                
-                <span class="abstract-title-text">compose函数</span>
-            </a>
-            <div class="abstract-content">
-                compose函数组合多个函数，从右到左，比如：compose(f, g, h) 最终得到这个结果 (...args) =&gt; f(g(h(...args))).
-123456789101112131415161718192021function compose(...funcs) &#123;  return function(x) &#123;    return funcs.reduceRight((acc, func) =&gt; func(acc), x);  &#125;;&#125;// 示例用法function add1(x) &#123;  return x + 1...
-            </div>
-            <!-- read more -->
-            
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2023/03/31">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/03/31</span>
-                </div>
-                <!-- tags -->
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-        
-            
-        
-        <article class="index-post">
             <a class="abstract-title" href="/2023/03/31/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/javascript/pipe/">
                 
                 <span class="abstract-title-text">pipe</span>
@@ -747,6 +655,98 @@ Object.assign()方法：可以将一个或多个源对象的属性复制到目�
             </a>
             <div class="abstract-content">
                 https://zhuanlan.zhihu.com/p/77577415
+
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2023/03/31">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/03/31</span>
+                </div>
+                <!-- tags -->
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2023/03/31/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/pnpm%E3%80%81npm%E5%92%8Cyarn/">
+                
+                <span class="abstract-title-text">pnpm、npm和yarn</span>
+            </a>
+            <div class="abstract-content">
+                pnpm、npm和yarn都是JavaScript的包管理工具，它们都可以用来安装、更新和管理JavaScript项目中的依赖。
+下面是它们的一些对比：
+
+安装速度：pnpm的安装速度比npm和yarn更快，因为它会在安装依赖时共享相同的依赖，从而减少了重复的下载和安装。
+硬盘空间占用：pnpm的硬盘空间占用比npm和yarn更少，因为它会共享相同的依赖，从而减少了重复的下载和安装。
+兼容性：npm和yarn都是广泛使用的包管理工具，而pnpm还比较新，可能会出现兼容性问题。
+社区支持：npm和yarn都有庞大的社区支持，有大量的文档和教程可供参考，而pnpm的社区支持还相对较小。
+功能...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2023/03/31">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/03/31</span>
+                </div>
+                <!-- tags -->
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2023/03/31/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/pnpm%E5%92%8Cmonorepo/">
+                
+                <span class="abstract-title-text">pnpm和monorepo</span>
+            </a>
+            <div class="abstract-content">
+                pnpm和monorepo都是现代化前端开发中常用的工具。
+pnpm是一种包管理工具，类似于npm和yarn，它可以帮助我们更高效地管理依赖，避免依赖冲突和冗余。与npm和yarn不同的是，pnpm使用了一种类似于硬链接的方式来共享依赖，从而节省了磁盘空间，并且可以快速安装依赖。pnpm还支持并行安装和更新依赖，提高了安装速度，具有良好的兼容性和稳定性。
+而monorepo则是一种代码管理的方式，它将多个项目的代码存储在一个单一的代码库中，以便更好地共享代码和资源。在monorepo中，每个项目都可以是一个独立的包，它们可以共享相同的依赖项和构建&#x2F;测试工具。monorepo还可...
+            </div>
+            <!-- read more -->
+            
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2023/03/31">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/03/31</span>
+                </div>
+                <!-- tags -->
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2023/03/31/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E6%AD%A3%E5%88%99/%E9%AA%8C%E8%AF%81%E6%89%8B%E6%9C%BA%E5%8F%B7/">
+                
+                <span class="abstract-title-text">验证手机号</span>
+            </a>
+            <div class="abstract-content">
+                123function isPhone(number)&#123;		const reg = \1\&#125;
+
 
             </div>
             <!-- read more -->

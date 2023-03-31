@@ -428,16 +428,18 @@
             
         
         <article class="index-post">
-            <a class="abstract-title" href="/2023/03/31/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E7%AE%97%E6%B3%95/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%A6%82%E8%BF%B0/">
+            <a class="abstract-title" href="/2023/03/31/docker/build/">
                 
-                <span class="abstract-title-text">设计模式概述</span>
+                <span class="abstract-title-text">build</span>
             </a>
             <div class="abstract-content">
-                设计模式是一种被广泛使用的编程范式，它可以帮助程序员解决常见的软件设计问题。根据《设计模式：可复用面向对象软件的基础》一书的分类，设计模式可以分为以下 23 种：
+                1docker run --rm -it -p 3000:3000 -e MY_SECRET=$(cat /Users/free/Desktop/学习草稿/脚本/multi-signup/my_secret_test) multi-signup
 
-创建型模式（Creational Patterns）：用于创建对象的模式，包括工厂方法模式、抽象工厂模式、单例模式、建造者模式和原型模式。
-结构型模式（Structural Patterns）：用于组合类和对象，以形成更大的结构，包括适配器模式、桥接模式、组合模式、装饰者模式、外观模式、享元模式和代理模式。
-行为型模式（Behavioral Patterns）：用于在对象之间划分责任和算法，以及控制其流程，包括责任链模式、命...
+1ocker run --rm -it -p 3000:3000 -e MY_SECRET=my_secret_value my-app
+
+1docker run --rm -it -p 3000:3000 -v $(pwd)/config:/app/config my-app
+
+123MY_SECRET=$(cat ./my_secret)d...
             </div>
             <!-- read more -->
             
@@ -459,13 +461,17 @@
             
         
         <article class="index-post">
-            <a class="abstract-title" href="/2023/03/31/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E7%AE%97%E6%B3%95/%E9%93%BE%E8%A1%A8/%E5%8F%8D%E8%BD%AC%E5%8D%95%E9%93%BE%E8%A1%A8/">
+            <a class="abstract-title" href="/2023/03/31/docker/%E6%9E%84%E5%BB%BA%E9%95%9C%E5%83%8F/">
                 
-                <span class="abstract-title-text">反转单链表</span>
+                <span class="abstract-title-text">构建镜像</span>
             </a>
             <div class="abstract-content">
-                leetcode 206
-递归方案123456789101112131415161718/** * Definition for singly-linked list. * function ListNode(val, next) &#123; *     this.val = (val===undefined ? 0 : val) *     this.next = (next===undefined ? null : next) * &#125; *//** * @param &#123;ListNode&#125; head * @return &#123;ListNode&#12...
+                https://learnku.com/articles/48435
+构建镜像并发布
+登录docker账号docker login
+打包用户名前缀镜像用户名&#x2F;镜像名
+推送镜像docker push 镜像名称：版本
+
             </div>
             <!-- read more -->
             
