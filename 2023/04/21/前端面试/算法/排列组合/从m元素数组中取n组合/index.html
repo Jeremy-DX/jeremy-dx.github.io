@@ -1,0 +1,1749 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- title -->
+
+
+    
+
+<!-- keywords -->
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="John Doe">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="John Doe">
+    
+        <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content="">
+    <meta name="description" content="穷举法一个有m个元素的数组，元素之间各个不同，如何穷举其中由n个元素组成的组合 可以使用递归来穷举由n个元素组成的组合。 具体实现方法如下：  首先判断特殊情况，如果n等于0或m小于n，则返回空数组。 如果n等于1，则将原始数组中的每个元素都转化为一个只包含该元素的数组，并返回这些数组组成的数组。 否则，将原始数组分为两部分，一部分包含第一个元素，另一部分不包含第一个元素，然后递归求解这两部分的n">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从m元素数组中取n组合">
+<meta property="og:url" content="http://example.com/2023/04/21/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E7%AE%97%E6%B3%95/%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88/%E4%BB%8Em%E5%85%83%E7%B4%A0%E6%95%B0%E7%BB%84%E4%B8%AD%E5%8F%96n%E7%BB%84%E5%90%88/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="穷举法一个有m个元素的数组，元素之间各个不同，如何穷举其中由n个元素组成的组合 可以使用递归来穷举由n个元素组成的组合。 具体实现方法如下：  首先判断特殊情况，如果n等于0或m小于n，则返回空数组。 如果n等于1，则将原始数组中的每个元素都转化为一个只包含该元素的数组，并返回这些数组组成的数组。 否则，将原始数组分为两部分，一部分包含第一个元素，另一部分不包含第一个元素，然后递归求解这两部分的n">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-04-21T07:02:19.450Z">
+<meta property="article:modified_time" content="2023-04-21T07:02:19.450Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="icon" href="/assets/favicon.ico">
+    
+    <title>从m元素数组中取n组合 · jeremy-dx&#39;s Studio</title>
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+    (function (w) {
+        'use strict'
+        // rel=preload support test
+        if (!w.loadCSS) {
+            w.loadCSS = function () {}
+        }
+        // define on the loadCSS obj
+        var rp = (loadCSS.relpreload = {})
+        // rel=preload feature support test
+        // runs once and returns a function for compat purposes
+        rp.support = (function () {
+            var ret
+            try {
+                ret = w.document.createElement('link').relList.supports('preload')
+            } catch (e) {
+                ret = false
+            }
+            return function () {
+                return ret
+            }
+        })()
+
+        // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+        // then change that media back to its intended value on load
+        rp.bindMediaToggle = function (link) {
+            // remember existing media attr for ultimate state, or default to 'all'
+            var finalMedia = link.media || 'all'
+
+            function enableStylesheet() {
+                link.media = finalMedia
+            }
+
+            // bind load handlers to enable media
+            if (link.addEventListener) {
+                link.addEventListener('load', enableStylesheet)
+            } else if (link.attachEvent) {
+                link.attachEvent('onload', enableStylesheet)
+            }
+
+            // Set rel and non-applicable media type to start an async request
+            // note: timeout allows this to happen async to let rendering continue in IE
+            setTimeout(function () {
+                link.rel = 'stylesheet'
+                link.media = 'only x'
+            })
+            // also enable media after 3 seconds,
+            // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+            setTimeout(enableStylesheet, 3000)
+        }
+
+        // loop through link elements in DOM
+        rp.poly = function () {
+            // double check this to prevent external calls from running
+            if (rp.support()) {
+                return
+            }
+            var links = w.document.getElementsByTagName('link')
+            for (var i = 0; i < links.length; i++) {
+                var link = links[i]
+                // qualify links to those with rel=preload and as=style attrs
+                if (
+                    link.rel === 'preload' &&
+                    link.getAttribute('as') === 'style' &&
+                    !link.getAttribute('data-loadcss')
+                ) {
+                    // prevent rerunning on link
+                    link.setAttribute('data-loadcss', true)
+                    // bind listeners to toggle media back
+                    rp.bindMediaToggle(link)
+                }
+            }
+        }
+
+        // if unsupported, run the polyfill
+        if (!rp.support()) {
+            // run once at least
+            rp.poly()
+
+            // rerun poly on an interval until onload
+            var run = w.setInterval(rp.poly, 500)
+            if (w.addEventListener) {
+                w.addEventListener('load', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            } else if (w.attachEvent) {
+                w.attachEvent('onload', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            }
+        }
+
+        // commonjs
+        if (typeof exports !== 'undefined') {
+            exports.loadCSS = loadCSS
+        } else {
+            w.loadCSS = loadCSS
+        }
+    })(typeof global !== 'undefined' ? global : this)
+</script>
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+</style>
+
+    <link rel="preload" href="/css/style.css?v=20211217" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="/css/dark.css?v=20211217" as="style">
+    <link rel="stylesheet" href="/css/dark.css">
+    <link rel="stylesheet" href="/css/mobile.css?v=20211217" media="(max-width: 960px)">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js?v=20211217" as="script">
+    <link rel="preload" href="/scripts/dark.js?v=20211217" as="script">
+    <link rel="preload" href="/font/Oswald-Regular.ttf" as="font" crossorigin>
+    <link rel="preload" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" as="font" crossorigin>
+    <!-- algolia -->
+    
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ == undefined) {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js" />')
+        }
+    </script>
+    
+        <body class="post-body">
+    
+        <!-- header -->
+        <header class="header header-mobile">
+    <!-- top read progress line -->
+    <div class="header-element">
+        <div class="read-progress"></div>
+    </div>
+    <!-- sidebar menu button -->
+    <div class="header-element">
+        
+            <div class="header-sidebar-menu">
+        
+            
+                <div style="padding-left: 1px;">&#xe775;</div>
+            
+        </div>
+    </div>
+    <!-- header actions -->
+    <div class="header-actions">
+        <!-- theme mode switch button -->
+        <span class="header-theme-btn header-element">
+            <i class="fas fa-adjust"></i>
+        </span>
+        <!-- back to home page text -->
+        <span class="home-link header-element">
+            <a href=/>jeremy-dx's Studio.</a>
+        </span>
+    </div>
+    <!-- toggle banner for post layout -->
+    
+        
+            <div class="banner">
+        
+            <div class="blog-title header-element">
+                <a href="/">jeremy-dx&#39;s Studio.</a>
+            </div>
+            <div class="post-title header-element">
+                <a href="#" class="post-name">从m元素数组中取n组合</a>
+            </div>
+        </div>
+    
+</header>
+
+        <!-- fixed footer -->
+        <footer class="footer-fixed">
+    <!-- back to top button -->
+    <div class="footer-fixed-element">
+        
+            <div class="back-top back-top-hidden">
+        
+        
+            <div>&#xe639;</div>
+        
+        </div>
+    </div>
+</footer>
+
+        <!-- wrapper -->
+        <div class="wrapper">
+            <div class="site-intro" style="
+
+
+
+
+
+
+
+    height:50vh;
+
+">
+    
+    <!-- 主页  -->
+    
+        
+    <!-- 404页  -->
+    
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+                从m元素数组中取n组合
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+                
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页 meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+    
+</div>
+
+                
+                <!-- 文章字数统计 -->
+                
+                <div class="post-intro-meta">
+                    <!-- 撰写日期 -->
+                    <span class="iconfont-archer post-intro-calander">&#xe676;</span>
+                    <span class="post-intro-time">2023/04/21</span>
+                    <!-- busuanzi -->
+                    
+                        <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                            <span class="iconfont-archer post-intro-busuanzi">&#xe602;</span>
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    
+                    <!-- 文章分享 -->
+                    <span class="share-wrapper">
+                        <span class="iconfont-archer share-icon">&#xe71d;</span>
+                        <span class="share-text">Share</span>
+                        <ul class="share-list">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+            <script>
+  // get user agent
+  function getBrowserVersions() {
+    var u = window.navigator.userAgent
+    return {
+      userAgent: u,
+      trident: u.indexOf('Trident') > -1, //IE内核
+      presto: u.indexOf('Presto') > -1, //opera内核
+      webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+      gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+      mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+      ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+      android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+      iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+      iPad: u.indexOf('iPad') > -1, //是否为iPad
+      webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+      weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+      uc: u.indexOf('UCBrowser') > -1, //是否为android下的UC浏览器
+    }
+  }
+  var browser = {
+    versions: getBrowserVersions(),
+  }
+  console.log('userAgent: ' + browser.versions.userAgent)
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded')
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document
+        .getElementsByClassName('intro-title')[0]
+        .classList.add('intro-fade-in')
+      document
+        .getElementsByClassName('intro-subtitle')[0]
+        .classList.add('intro-fade-in')
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in')
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb() {
+    if (browser.versions.uc) {
+      console.log('UCBrowser')
+      fontLoaded()
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular'],
+        },
+        loading: function () {
+          // 所有字体开始加载
+          // console.log('font loading');
+        },
+        active: function () {
+          // 所有字体已渲染
+          fontLoaded()
+        },
+        inactive: function () {
+          // 字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout')
+          fontLoaded()
+        },
+        timeout: 5000, // Set the timeout to two seconds
+      })
+    }
+  }
+
+  function asyncErr() {
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0]
+    o.src = u
+    if (cb) {
+      o.addEventListener(
+        'load',
+        function (e) {
+          cb(null, e)
+        },
+        false
+      )
+    }
+    if (err) {
+      o.addEventListener(
+        'error',
+        function (e) {
+          err(null, e)
+        },
+        false
+      )
+    }
+    s.parentNode.insertBefore(o, s)
+  }
+
+  var asyncLoadWithFallBack = function (arr, success, reject) {
+    var currReject = function () {
+      reject()
+      arr.shift()
+      if (arr.length) async(arr[0], success, currReject)
+    }
+
+    async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack(
+    [
+      'https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js',
+      'https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js',
+      "/lib/webfontloader.min.js",
+    ],
+    asyncCb,
+    asyncErr
+  )
+</script>
+
+            <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+            <div class="container container-unloaded">
+                <main class="main post-page">
+    <article class="article-entry">
+        <h3 id="穷举法"><a href="#穷举法" class="headerlink" title="穷举法"></a>穷举法</h3><p>一个有m个元素的数组，元素之间各个不同，如何穷举其中由n个元素组成的组合</p>
+<p>可以使用递归来穷举由n个元素组成的组合。</p>
+<p>具体实现方法如下：</p>
+<ol>
+<li>首先判断特殊情况，如果n等于0或m小于n，则返回空数组。</li>
+<li>如果n等于1，则将原始数组中的每个元素都转化为一个只包含该元素的数组，并返回这些数组组成的数组。</li>
+<li>否则，将原始数组分为两部分，一部分包含第一个元素，另一部分不包含第一个元素，然后递归求解这两部分的n-1个元素组合，最后将这两部分的组合合并起来，即可得到原始数组中n个元素的所有组合。</li>
+</ol>
+<p>递归函数的具体实现如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">combination</span>(<span class="params">arr, n</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (n === <span class="number">0</span> || arr.<span class="property">length</span> &lt; n) &#123;</span><br><span class="line">    <span class="keyword">return</span> [];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (n === <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> arr.<span class="title function_">map</span>(<span class="function"><span class="params">item</span> =&gt;</span> [item]);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> [first, ...rest] = arr;</span><br><span class="line">  <span class="keyword">const</span> withFirst = <span class="title function_">combination</span>(rest, n - <span class="number">1</span>).<span class="title function_">map</span>(<span class="function"><span class="params">item</span> =&gt;</span> [first, ...item]);</span><br><span class="line">  <span class="keyword">const</span> withoutFirst = <span class="title function_">combination</span>(rest, n);</span><br><span class="line">  <span class="keyword">return</span> [...withFirst, ...withoutFirst];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>这个函数接受两个参数，一个是原始数组 <code>arr</code>，一个是要求的元素个数 <code>n</code>。它会返回一个由数组组成的数组，每个数组表示原始数组中n个元素的一个组合。</p>
+<p>下面是一个使用 <code>combination()</code> 函数的示例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="keyword">const</span> result = <span class="title function_">combination</span>(arr, <span class="number">2</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result); <span class="comment">// [[1, 2], [1, 3], [1, 4], [2, 3], [2, 4], [3, 4]]</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>在这个例子中，我们调用 <code>combination()</code> 函数来求解由原始数组 <code>[1, 2, 3, 4]</code> 中2个元素组成的所有组合，并将结果保存在变量 <code>result</code>中。函数返回的结果是一个由6个数组组成的数组，每个数组表示原始数组中2个元素的一个组合。</p>
+<p>需要注意的是，这个函数的时间复杂度为 O(m^n)，当n和m的值比较大时，函数的性能会受到影响。因此，在实际应用中，需要根据具体情况来选择合适的算法来实现元素组合的穷举。</p>
+<p>这段代码是一个算法，用于求一个给定数组 nums 的所有子集。算法的主体部分是两层循环，外层循环遍历长度为 n 的所有二进制数，内层循环遍历数组 nums 的所有元素，判断当前二进制数的第 i 位是否为 1，如果是，则将 nums 的第 i 个元素加入当前子集中。</p>
+<p>具体解释如下：</p>
+<ol>
+<li>首先定义一个空数组 ans，用于存储所有的子集。</li>
+<li>然后计算数组 nums 的长度 n。</li>
+<li>外层循环使用一个变量 mask，初始值为 0，每次循环将 mask 自增 1，遍历长度为 n 的所有二进制数。</li>
+<li>内层循环使用一个变量 i，遍历数组 nums 的所有元素。</li>
+<li>在内层循环中，使用按位与运算符 &amp;，判断当前二进制数 mask 的第 i 位是否为 1。如果是，则将 nums 的第 i 个元素加入一个临时数组 t 中。</li>
+<li>完成内层循环后，将临时数组 t 加入到 ans 数组中，表示当前二进制数 mask 对应的一个子集已经求出。</li>
+<li>循环结束后，返回 ans 数组，其中包含了数组 nums 的所有子集。</li>
+</ol>
+<p>总的来说，这段代码是通过枚举长度为 n 的所有二进制数，来求出数组 nums 的所有子集。其中，每个长度为 n 的二进制数对应一个子集，子集中包含了 nums 的若干个元素，元素的选择是根据二进制位上的值来决定的。这种算法时间复杂度为 O(2^n)，是一种常用的求解子集问题的方法。</p>
+<p>这段代码是一个JavaScript函数，用于计算一个数组中所有可能的子集（包括空集）。这里使用了位运算，通过遍历二进制掩码来实现。</p>
+<ol>
+<li><p>定义函数<code>subsets</code>，接收一个参数<code>nums</code>，表示输入的数组。</p>
+</li>
+<li><p>定义一个空数组<code>ans</code>，用于存储所有子集。</p>
+</li>
+<li><p>获取输入数组的长度<code>n</code>。</p>
+</li>
+<li><p>使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">for</span><br></pre></td></tr></table></figure>
+
+<p>循环遍历所有可能的二进制掩码，范围从</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0</span><br></pre></td></tr></table></figure>
+
+<p>到</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(1 &lt;&lt; n) - 1</span><br></pre></td></tr></table></figure>
+
+<p>。每次循环时，掩码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mask</span><br></pre></td></tr></table></figure>
+
+<p>表示一个子集。</p>
+<ul>
+<li><code>1 &lt;&lt; n</code>表示将1左移n位，相当于计算2^n。例如，若n&#x3D;3，那么1 &lt;&lt; 3 &#x3D; 8，表示有8种可能的子集。</li>
+</ul>
+</li>
+<li><p>定义一个空数组<code>t</code>，用于存储当前子集。</p>
+</li>
+<li><p>再次使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">for</span><br></pre></td></tr></table></figure>
+
+<p>循环，从</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0</span><br></pre></td></tr></table></figure>
+
+<p>到</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">n-1</span><br></pre></td></tr></table></figure>
+
+<p>，遍历输入数组中的每个元素。</p>
+<ul>
+<li>如果<code>mask &amp; (1 &lt;&lt; i)</code>为true，表示当前元素应该被包含在当前子集中。将<code>nums[i]</code>添加到数组<code>t</code>。</li>
+<li><code>mask &amp; (1 &lt;&lt; i)</code>用于检查二进制掩码<code>mask</code>中第<code>i</code>位是否为1。如果为1，表示当前子集中包含<code>nums[i]</code>；否则，不包含。</li>
+</ul>
+</li>
+<li><p>将当前子集<code>t</code>添加到结果数组<code>ans</code>。</p>
+</li>
+<li><p>返回结果数组<code>ans</code>，包含所有可能的子集。</p>
+</li>
+</ol>
+<p>举个例子，对于输入数组<code>[1, 2, 3]</code>，函数将返回以下子集：<code>[[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]</code>。</p>
+<h3 id="mask-amp-1-lt-lt-i"><a href="#mask-amp-1-lt-lt-i" class="headerlink" title="mask &amp; (1 &lt;&lt; i)"></a>mask &amp; (1 &lt;&lt; i)</h3><p><code>mask &amp; (1 &lt;&lt; i)</code>是一个位运算表达式，用于检查二进制掩码<code>mask</code>中第<code>i</code>位是否为1。这里使用了按位与（<code>&amp;</code>）运算符与位移运算符（<code>&lt;&lt;</code>）。</p>
+<p>先了解一下位运算符：</p>
+<ol>
+<li>按位与（<code>&amp;</code>）：对应位都为1时结果为1，否则为0。</li>
+<li>左移（<code>&lt;&lt;</code>）：将二进制数向左移动指定位数，右侧补0。</li>
+</ol>
+<p>现在详细分析表达式<code>mask &amp; (1 &lt;&lt; i)</code>：</p>
+<ol>
+<li><code>1 &lt;&lt; i</code>：将数字1向左移动i位。例如，如果i为2，则表达式的结果是<code>100</code>（二进制），即十进制的4。</li>
+<li><code>mask &amp; (1 &lt;&lt; i)</code>：将<code>mask</code>与<code>1 &lt;&lt; i</code>进行按位与运算。这会检查<code>mask</code>的二进制表示中第i位是否为1。<ul>
+<li>如果第i位为1，那么<code>mask &amp; (1 &lt;&lt; i)</code>的结果就是<code>1 &lt;&lt; i</code>，在布尔上下文中表示为true。</li>
+<li>如果第i位为0，那么<code>mask &amp; (1 &lt;&lt; i)</code>的结果就是0，表示为false。</li>
+</ul>
+</li>
+</ol>
+<p>这个表达式用于判断<code>mask</code>中的哪些位为1。对于每个二进制位，如果为1，表示子集中包含对应位置的元素；如果为0，表示子集中不包含对应位置的元素。通过遍历<code>mask</code>的每个二进制位，可以构造对应的子集。</p>
+
+    </article>
+    <!-- license -->
+    
+    <!-- paginator -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href="/2023/04/21/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E7%AE%97%E6%B3%95/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/" title="代理模式">
+                    <div class="nextTitle">代理模式</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2023/04/21/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E7%AE%97%E6%B3%95/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" title="单例模式">
+                    <div class="prevTitle">单例模式</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- comment -->
+    
+        <div class="post-comment">
+            <!-- 来必力 City 版安装代码 -->
+
+
+            
+
+            
+
+            
+
+            <!-- utteranc评论 -->
+
+
+            <!-- partial('_partial/comment/changyan') -->
+            <!--PC版-->
+
+
+            
+            
+
+            
+
+        </div>
+    
+    <!-- timeliness note -->
+    <!-- idea from: https://hexo.fluid-dev.com/posts/hexo-injector/#%E6%96%87%E7%AB%A0%E6%97%B6%E6%95%88%E6%80%A7%E6%8F%90%E7%A4%BA -->
+    
+    <!-- Mathjax -->
+    
+</main>
+
+                <!-- profile -->
+                
+            </div>
+            <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+        <div class="social">
+            
+    
+        
+            
+                <a href="mailto:12345@qq.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/jeremy-dx" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title=wechat>
+                    
+                    <img class="profile-qr" src="/assets/example_qr.png" />
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+
+        </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- website approve for Chinese user -->
+    
+    <!-- 不蒜子  -->
+    
+        <div class="busuanzi-container">
+            
+             
+                <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+            
+        </div>
+    	
+</footer>
+
+        </div>
+        <!-- toc -->
+        
+            <div class="toc-wrapper toc-wrapper-loding" style=
+
+
+
+
+
+
+
+    top:50vh;
+
+>
+                <div class="toc-catalog">
+                    <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+                </div>
+                <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%B7%E4%B8%BE%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">穷举法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mask-amp-1-lt-lt-i"><span class="toc-number">2.</span> <span class="toc-text">mask &amp; (1 &lt;&lt; i)</span></a></li></ol>
+            </div>
+        
+        <!-- sidebar -->
+        <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+        <div class="sidebar-panel-archives">
+    <!-- 在 ejs 中将 archive 按照时间排序 -->
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 47
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+        
+            
+            
+            <div class="archive-year"> 2023 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span>
+            <a class="archive-post-title" href="/2023/04/21/Electron/electron%E8%B5%84%E6%BA%90/">electron资源</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span>
+            <a class="archive-post-title" href="/2023/04/21/docker/build/">build</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span>
+            <a class="archive-post-title" href="/2023/04/21/docker/%E6%9E%84%E5%BB%BA%E9%95%9C%E5%83%8F/">构建镜像</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span>
+            <a class="archive-post-title" href="/2023/04/21/flex/flex%E5%B8%83%E5%B1%80%E5%92%8Cgrid%E5%B8%83%E5%B1%80%E5%AF%B9%E6%AF%94/">flex布局和grid布局对比</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span>
+            <a class="archive-post-title" href="/2023/04/21/flex/flex%E5%B8%83%E5%B1%80/">flex布局</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span>
+            <a class="archive-post-title" href="/2023/04/21/flex/%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8flex%E5%B8%83%E5%B1%80/">为什么使用flex布局</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span>
+            <a class="archive-post-title" href="/2023/04/21/npm%E5%8C%85/%E5%8F%91%E5%B8%83npm%E5%8C%85/">发布npm包</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span>
+            <a class="archive-post-title" href="/2023/04/21/npm%E5%8C%85/%E5%8F%91%E5%B8%83%E4%B8%80%E4%B8%AA%E7%94%B1typescript%E6%9E%84%E5%BB%BA%E7%9A%84npm%E5%8C%85/">发布一个由typescript构建的npm包</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span>
+            <a class="archive-post-title" href="/2023/04/21/typescript/dts%E5%92%8Ctypes%E5%8C%85/">dts和types包</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span>
+            <a class="archive-post-title" href="/2023/04/21/vue%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/vue%E6%BA%90%E7%A0%81%E2%80%94%E2%80%94%E4%BE%9D%E8%B5%96%E6%94%B6%E9%9B%86/">vue源码——依赖收集</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span>
+            <a class="archive-post-title" href="/2023/04/21/vue%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/vue%E6%BA%90%E7%A0%81%E2%80%94%E2%80%94%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86/">vue源码——响应式原理</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span>
+            <a class="archive-post-title" href="/2023/04/21/typescript/node%E9%85%8D%E7%BD%AEtypescript/">node配置typescript</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span>
+            <a class="archive-post-title" href="/2023/04/21/vue%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/vue%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%A5%BD%E8%B5%84%E6%BA%90/">vue源码学习的好资源</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span>
+            <a class="archive-post-title" href="/2023/04/21/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/%E8%BD%AF%E9%93%BE%E6%8E%A5%E5%92%8C%E7%A1%AC%E9%93%BE%E6%8E%A5/">软链接和硬链接</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span>
+            <a class="archive-post-title" href="/2023/04/21/%E5%B7%A5%E5%85%B7%E8%BD%AF%E4%BB%B6/adobe%E8%BD%AF%E4%BB%B6%E8%B5%84%E6%BA%90/">adobe软件资源</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span>
+            <a class="archive-post-title" href="/2023/04/21/%E5%B7%A5%E5%85%B7%E8%BD%AF%E4%BB%B6/%E8%A7%A3%E5%86%B3mac_airdrop_wifi%E5%8D%A0%E7%94%A8%E9%97%AE%E9%A2%98/">解决mac-airdrop-wifi占用问题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span>
+            <a class="archive-post-title" href="/2023/04/21/vue%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/vue%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0-day1/">vue源码学习-day1</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span>
+            <a class="archive-post-title" href="/2023/04/21/%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%98%E8%B5%84%E6%BA%90/4k%E7%94%B5%E5%BD%B1/">4k电影</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span>
+            <a class="archive-post-title" href="/2023/04/21/%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%98%E8%B5%84%E6%BA%90/NBA/">NBA</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span>
+            <a class="archive-post-title" href="/2023/04/21/%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%98%E8%B5%84%E6%BA%90/%E6%90%9C%E7%B4%A2%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%98%E8%B5%84%E6%BA%90%E7%AB%99/">搜索阿里云盘资源站</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span>
+            <a class="archive-post-title" href="/2023/04/21/%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%98%E8%B5%84%E6%BA%90/%E6%BC%94%E5%94%B1%E4%BC%9A/">演唱会</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span>
+            <a class="archive-post-title" href="/2023/04/21/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/Vue/%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/">双向绑定</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span>
+            <a class="archive-post-title" href="/2023/04/21/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/javascript/%5B'1',%20'2',%20'3'%5D.map(parseInt)/">1-2-3-map-parseInt</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span>
+            <a class="archive-post-title" href="/2023/04/21/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/javascript/call%E3%80%81apply%E3%80%81bind/">call、apply、bind</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span>
+            <a class="archive-post-title" href="/2023/04/21/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/javascript/compose%E5%87%BD%E6%95%B0/">compose函数</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span>
+            <a class="archive-post-title" href="/2023/04/21/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/javascript/pipe/">pipe</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span>
+            <a class="archive-post-title" href="/2023/04/21/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/javascript/pipe%E5%92%8Ccompose%E7%9A%84%E5%8C%BA%E5%88%AB/">pipe和compose的区别</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span>
+            <a class="archive-post-title" href="/2023/04/21/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/javascript/setTimeout%E5%92%8CsetInterval%E7%9B%B8%E4%BA%92%E5%AE%9E%E7%8E%B0/">setTimeout和setInterval相互实现</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span>
+            <a class="archive-post-title" href="/2023/04/21/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/javascript/%E4%BB%8B%E7%BB%8D%E4%B8%8B%20Set%E3%80%81Map%E3%80%81WeakSet%20%E5%92%8C%20WeakMap%20%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F/">介绍下-Set、Map、WeakSet-和-WeakMap-的区别？</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span>
+            <a class="archive-post-title" href="/2023/04/21/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/javascript/%E5%9B%9E%E6%96%87%E5%AD%97%E7%AC%A6%E4%B8%B2/">回文字符串</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span>
+            <a class="archive-post-title" href="/2023/04/21/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/javascript/%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D/">深拷贝和浅拷贝</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span>
+            <a class="archive-post-title" href="/2023/04/21/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/monorepo/">monorepo</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span>
+            <a class="archive-post-title" href="/2023/04/21/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/pnpm%E3%80%81npm%E5%92%8Cyarn/">pnpm、npm和yarn</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span>
+            <a class="archive-post-title" href="/2023/04/21/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E6%AD%A3%E5%88%99/%E9%AA%8C%E8%AF%81%E6%89%8B%E6%9C%BA%E5%8F%B7/">验证手机号</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span>
+            <a class="archive-post-title" href="/2023/04/21/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/pnpm%E5%92%8Cmonorepo/">pnpm和monorepo</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span>
+            <a class="archive-post-title" href="/2023/04/21/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E7%AE%97%E6%B3%95/%E9%98%9F%E5%88%97/">队列</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span>
+            <a class="archive-post-title" href="/2023/04/21/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%A0/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span>
+            <a class="archive-post-title" href="/2023/04/21/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E7%AE%97%E6%B3%95/%E4%BA%8C%E5%8F%89%E6%A0%91/%E5%8F%8D%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91/">反转二叉树</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span>
+            <a class="archive-post-title" href="/2023/04/21/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E7%AE%97%E6%B3%95/%E4%BA%8C%E5%8F%89%E6%A0%91/%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86/">二叉树遍历</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span>
+            <a class="archive-post-title" href="/2023/04/21/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E7%AE%97%E6%B3%95/%E5%9B%9E%E6%BA%AF/%E4%BB%80%E4%B9%88%E6%98%AF%E5%9B%9E%E6%BA%AF/">什么是回溯</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span>
+            <a class="archive-post-title" href="/2023/04/21/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E7%AE%97%E6%B3%95/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/">代理模式</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span>
+            <a class="archive-post-title" href="/2023/04/21/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E7%AE%97%E6%B3%95/%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88/%E4%BB%8Em%E5%85%83%E7%B4%A0%E6%95%B0%E7%BB%84%E4%B8%AD%E5%8F%96n%E7%BB%84%E5%90%88/">从m元素数组中取n组合</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span>
+            <a class="archive-post-title" href="/2023/04/21/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E7%AE%97%E6%B3%95/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">单例模式</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span>
+            <a class="archive-post-title" href="/2023/04/21/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E7%AE%97%E6%B3%95/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/">工厂模式</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span>
+            <a class="archive-post-title" href="/2023/04/21/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E7%AE%97%E6%B3%95/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%A6%82%E8%BF%B0/">设计模式概述</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/21</span>
+            <a class="archive-post-title" href="/2023/04/21/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95/%E7%AE%97%E6%B3%95/%E9%93%BE%E8%A1%A8/%E5%8F%8D%E8%BD%AC%E5%8D%95%E9%93%BE%E8%A1%A8/">反转单链表</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/17</span>
+            <a class="archive-post-title" href="/2023/03/17/about/about/">about</a>
+        </li>
+    
+    </div>
+</div>
+
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+        
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+        缺失模块，请参考主题文档进行安装配置：https://github.com/fi3ework/hexo-theme-archer#%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+
+    </div>
+</div>
+
+        <!-- site-meta -->
+        <script>
+    var siteMetaRoot = "/"
+    if (siteMetaRoot === "undefined") {
+        siteMetaRoot = '/'
+    }
+    var siteMeta = {
+        url: "http://example.com",
+        root: siteMetaRoot,
+        author: "John Doe"
+    }
+</script>
+
+        <!-- import experimental options here -->
+        <!-- Custom Font -->
+
+
+        <!-- main func -->
+        <script src="/scripts/main.js?v=20211217"></script>
+        <!-- dark mode -->
+        <script src="/scripts/dark.js?v=20211217"></script>
+        <!-- fancybox -->
+        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" defer></script>
+        <!-- algolia -->
+        
+        <!-- busuanzi -->
+        
+            <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+        
+        <!-- CNZZ -->
+        
+        <!-- async load share.js -->
+        
+            <script src="/scripts/share.js?v=20211217" async></script>
+        
+        <!-- mermaid -->
+        
+    </body>
+</html>
